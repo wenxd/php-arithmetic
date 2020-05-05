@@ -18,6 +18,20 @@ function removeDuplicates(&$nums) {
     return count($nums);
 }
 
+//方法二。受官方启发
+function removeDuplicates2(&$nums) {
+    $count = count($nums);
+    if ($count == 0) return 0;
+    $i = 0;
+    for ($j = 1; $j < $count; $j++) {
+        if ($nums[$j] != $nums[$i]) {
+            $i++;
+            $nums[$i] = $nums[$j];
+        }
+    }
+    return $i + 1;
+}
+
 $nums = [0, 0, 1];
 $len = removeDuplicates($nums);
 var_dump($nums);
